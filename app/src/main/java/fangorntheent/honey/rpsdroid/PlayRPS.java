@@ -157,7 +157,7 @@ public class PlayRPS {
 
         addWinHistory(algList);
 
-        Scanner reader = new Scanner(System.in);
+        /*Scanner reader = new Scanner(System.in);
         String input;
         int parseResult;
 
@@ -178,18 +178,6 @@ public class PlayRPS {
                 addWinHistory(algList);
                 matchNumber++;
             }
-        }
-
-        /* For simulated playing for testing purposes
-        for (int i = 0; i < 10; i++) {
-            playerGeneral.history.add(new Random().nextInt(3));
-            setWeight(algList);
-            algGeneral.chosenAlgNumber = combineAlgs(algList);
-            runChosenAlg(algList);
-            addWinHistory(algList);
-            printWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1)), (Integer)(algGeneral.history.get(algGeneral.history.size() - 1)));
-            matchNumber++;
-        }
-        */
+        }*/
     }
 }
