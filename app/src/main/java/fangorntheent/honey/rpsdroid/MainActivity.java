@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static Translator translator = new Translator();
+    /*private static Translator translator = new Translator();
     private static int matchNumber = 0;
     private static int algIndex;
     private static int playerScore = 0;
