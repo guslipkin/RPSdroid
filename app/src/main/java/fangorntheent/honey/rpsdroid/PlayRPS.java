@@ -1,6 +1,5 @@
 package fangorntheent.honey.rpsdroid;
 
-import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
