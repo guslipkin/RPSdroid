@@ -86,4 +86,44 @@
         android:layout_alignStart="@+id/scissorsButtonID"
         android:textColor="@android:color/white" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/player_play"
+        android:id="@+id/playerPlayTextID"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/rockTextID"
+        android:layout_alignEnd="@+id/rockTextID"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/outcome"
+        android:id="@+id/outcomeTextID"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:singleLine="true"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/alg_play"
+        android:id="@+id/algPlayTextID"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/scissorsTextID"
+        android:layout_alignEnd="@+id/scissorsTextID"
+        android:layout_alignLeft="@+id/scissorsTextID"
+        android:layout_alignStart="@+id/scissorsTextID"
+        android:textColor="@android:color/white"
+        android:textAlignment="textStart" />
+
 </RelativeLayout>

@@ -1,10 +1,20 @@
 <resources>
     <string name="app_name">RPSdroid</string>
     <string name="action_settings">Settings</string>
+
     <string name="rock_image">rock_image</string>
     <string name="paper_image">paper_image</string>
     <string name="scissors_image">scissors_image</string>
+
     <string name="rock">Rock</string>
     <string name="paper">Paper</string>
     <string name="scissors">Scissors</string>
+
+    <string name="player_play">null</string>
+    <string name="outcome">null</string>
+    <string name="alg_play">null</string>
+
+    <string name="beats">BEATS</string>
+    <string name="ties_with">TIES WITH</string>
+    <string name="loses_to">LOSES TO</string>
 </resources>

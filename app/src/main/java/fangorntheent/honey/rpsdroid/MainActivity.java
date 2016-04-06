@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList algList = new ArrayList<AlgInterface>();
 
-    /**private static void printWinner(int playerPrev, int algPrev) {
+    private static void printWinner(int playerPrev, int algPrev) {
 
         WinChecker winChecker = new WinChecker();
         winChecker.setWinner(playerPrev, algPrev);
 
-        System.out.println(" The computer chose algorithm #" + (algIndex + 1));
+        //System.out.println(" The computer chose algorithm #" + (algIndex + 1));
         if (winChecker.winnerInt == 0) {
             System.out.println(" Your " + translator.numToWords(playerPrev) + " BEATS " + translator.numToWords(algPrev));
             playerScore++;
@@ -44,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
             tieScore++;
         }
         else if (winChecker.winnerInt == 2) {
-            System.out.println(" Your " + translator.numToWords(playerPrev) + " LOSES TO " + translator.numToWords(algPrev));
+            //System.out.println(" Your " + translator.numToWords(playerPrev) + " LOSES TO " + translator.numToWords(algPrev));
             aiScore++;
         }
         else
             System.out.println("Oops. I farted.");
-    }*/
+    }
 
     /**private static int parseInput(String str) {
 
@@ -242,6 +243,9 @@ public class MainActivity extends AppCompatActivity {
         addChosenAlg(algList);
         addWinHistory(algList);
         matchNumber++;
+
+        TextView textView = (TextView) findViewById(R.id.playerPlayTextID);
+        textView.setText(R.string.rock);
     }
 
     public void onPaperButtonClick(View view) {
