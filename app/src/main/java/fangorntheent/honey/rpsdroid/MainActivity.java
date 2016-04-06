@@ -24,11 +24,18 @@ public class MainActivity extends AppCompatActivity {
     private static int aiScore = 0;
     private static int tieScore = 0;
 
-    private static AlgGeneral algGeneral;
-    private static PlayerGeneral playerGeneral;
-    private static WinChecker winChecker;
+    private static AlgGeneral algGeneral = new AlgGeneral();
+    private static PlayerGeneral playerGeneral = new PlayerGeneral();
+    private static WinChecker winChecker = new WinChecker();
 
-    ArrayList algList = new ArrayList<AlgInterface>();
+    private ArrayList algList = new ArrayList<AlgInterface>();
+    AlgInterface algOne = new AlgOne();
+    AlgInterface algTwo = new AlgTwo();
+    AlgInterface algThree = new AlgThree();
+    AlgInterface algFour = new AlgFour();
+    AlgInterface algFive = new AlgFive();
+    AlgInterface algSix = new AlgSix();
+    AlgInterface algSeven = new AlgSeven();
 
     private static void printWinner(int playerPrev, int algPrev) {
 
@@ -37,19 +44,19 @@ public class MainActivity extends AppCompatActivity {
 
         //System.out.println(" The computer chose algorithm #" + (algIndex + 1));
         if (winChecker.winnerInt == 0) {
-            System.out.println(" Your " + translator.numToWords(playerPrev) + " BEATS " + translator.numToWords(algPrev));
+            //System.out.println(" Your " + translator.numToWords(playerPrev) + " BEATS " + translator.numToWords(algPrev));
             playerScore++;
         }
         else if (winChecker.winnerInt == 1) {
-            System.out.println(" Your " + translator.numToWords(playerPrev) + " TIES WITH " + translator.numToWords(algPrev));
+            //System.out.println(" Your " + translator.numToWords(playerPrev) + " TIES WITH " + translator.numToWords(algPrev));
             tieScore++;
         }
         else if (winChecker.winnerInt == 2) {
             //System.out.println(" Your " + translator.numToWords(playerPrev) + " LOSES TO " + translator.numToWords(algPrev));
             aiScore++;
         }
-        else
-            System.out.println("Oops. I farted.");
+        //else
+            //System.out.println("Oops. I farted.");
     }
 
     /**private static int parseInput(String str) {
@@ -206,22 +213,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        algGeneral = new AlgGeneral();
-        playerGeneral = new PlayerGeneral();
-        winChecker = new WinChecker();
         for (int i = 0; i < 2; i++) {
             playerGeneral.history.add(new Random().nextInt(3));
             algGeneral.history.add(new Random().nextInt(3));
             algGeneral.winHistory.add(new Random().nextInt(3));
         }
-
-        AlgInterface algOne = new AlgOne();
-        AlgInterface algTwo = new AlgTwo();
-        AlgInterface algThree = new AlgThree();
-        AlgInterface algFour = new AlgFour();
-        AlgInterface algFive = new AlgFive();
-        AlgInterface algSix = new AlgSix();
-        AlgInterface algSeven = new AlgSeven();
 
         algList.add(algOne);
         algList.add(algTwo);
@@ -234,32 +230,28 @@ public class MainActivity extends AppCompatActivity {
 
     public void onRockButtonClick(View view) {
         playerGeneral.history.add(0);
-        setWeight(algList);
-        //algGeneral.chosenAlgNumber = combineAlgs(algList);
-        addChosenAlg(algList);
-        addWinHistory(algList);
-        matchNumber++;
-
-        TextView textView = (TextView) findViewById(R.id.playerPlayTextID);
-        textView.setText(R.string.rock);
+        onPlayerClick(R.string.rock);
     }
 
     public void onPaperButtonClick(View view) {
         playerGeneral.history.add(1);
-        setWeight(algList);
-        algGeneral.chosenAlgNumber = combineAlgs(algList);
-        addChosenAlg(algList);
-        addWinHistory(algList);
-        matchNumber++;
+        onPlayerClick(R.string.paper);
     }
 
     public void onScissorsButtonClick(View view) {
         playerGeneral.history.add(2);
+        onPlayerClick(R.string.scissors);
+    }
+
+    public void onPlayerClick(int stringID) {
         setWeight(algList);
-        algGeneral.chosenAlgNumber = combineAlgs(algList);
-        addChosenAlg(algList);
-        addWinHistory(algList);
+        //algGeneral.chosenAlgNumber = combineAlgs(algList);
+        //addChosenAlg(algList);
+        //addWinHistory(algList);
         matchNumber++;
+
+        TextView textView = (TextView) findViewById(R.id.playerPlayTextID);
+        textView.setText(stringID);
     }
 
     @Override
