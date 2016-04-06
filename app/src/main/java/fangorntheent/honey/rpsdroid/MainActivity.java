@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -37,22 +39,29 @@ public class MainActivity extends AppCompatActivity {
     AlgInterface algSix = new AlgSix();
     AlgInterface algSeven = new AlgSeven();
 
-    private static void printWinner(int playerPrev, int algPrev) {
+    private void printWinner(int playerPrev, int algPrev) {
 
         WinChecker winChecker = new WinChecker();
         winChecker.setWinner(playerPrev, algPrev);
 
+        TextView algTextView = (TextView) findViewById(R.id.algPlayTextID);
+        algTextView.setText(translator.numToWords(algPrev));
+
+        TextView outcomeTextView = (TextView) findViewById(R.id.outcomeTextID);
         //System.out.println(" The computer chose algorithm #" + (algIndex + 1));
         if (winChecker.winnerInt == 0) {
             //System.out.println(" Your " + translator.numToWords(playerPrev) + " BEATS " + translator.numToWords(algPrev));
+            outcomeTextView.setText(R.string.beats);
             playerScore++;
         }
         else if (winChecker.winnerInt == 1) {
             //System.out.println(" Your " + translator.numToWords(playerPrev) + " TIES WITH " + translator.numToWords(algPrev));
+            outcomeTextView.setText(R.string.ties_with);
             tieScore++;
         }
         else if (winChecker.winnerInt == 2) {
             //System.out.println(" Your " + translator.numToWords(playerPrev) + " LOSES TO " + translator.numToWords(algPrev));
+            outcomeTextView.setText(R.string.loses_to);
             aiScore++;
         }
         //else
