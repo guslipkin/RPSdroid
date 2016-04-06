@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private static AlgGeneral algGeneral;
     private static PlayerGeneral playerGeneral;
     private static WinChecker winChecker;
+
+    ArrayList algList = new ArrayList<AlgInterface>();
 
     /**private static void printWinner(int playerPrev, int algPrev) {
 
@@ -107,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     private static void addChosenAlg(ArrayList<AlgInterface> algs) {
 
         int algPrev = algs.get(algGeneral.chosenAlgNumber).getHistory().get(algs.get(algGeneral.chosenAlgNumber).getHistory().size() - 1);
-        winChecker.addWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1)), algPrev, algGeneral.winHistory);
+        winChecker.addWinner((Integer) (playerGeneral.history.get(playerGeneral.history.size() - 1)), algPrev, algGeneral.winHistory);
     }
 
     private static void setWeight(ArrayList<AlgInterface> algs) {
@@ -230,6 +233,33 @@ public class MainActivity extends AppCompatActivity {
         algList.add(algSeven);
 
         addWinHistory(algList);
+    }
+
+    public void onRockButtonClick(View view) {
+        playerGeneral.history.add(0);
+        setWeight(algList);
+        algGeneral.chosenAlgNumber = combineAlgs(algList);
+        addChosenAlg(algList);
+        addWinHistory(algList);
+        matchNumber++;
+    }
+
+    public void onPaperButtonClick(View view) {
+        playerGeneral.history.add(1);
+        setWeight(algList);
+        algGeneral.chosenAlgNumber = combineAlgs(algList);
+        addChosenAlg(algList);
+        addWinHistory(algList);
+        matchNumber++;
+    }
+
+    public void onScissorsButtonClick(View view) {
+        playerGeneral.history.add(2);
+        setWeight(algList);
+        algGeneral.chosenAlgNumber = combineAlgs(algList);
+        addChosenAlg(algList);
+        addWinHistory(algList);
+        matchNumber++;
     }
 
     @Override

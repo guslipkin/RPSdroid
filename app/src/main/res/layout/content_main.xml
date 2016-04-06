@@ -31,7 +31,8 @@
         style="@style/AppTheme"
         android:layout_alignBottom="@+id/scissorsButtonID"
         android:clickable="true"
-        android:contentDescription="@string/paper_image" />
+        android:contentDescription="@string/paper_image"
+        android:onClick="onPaperButtonClick" />
 
     <ImageButton
         android:layout_width="100dp"
@@ -40,7 +41,8 @@
         android:clickable="true"
         android:contentDescription="@string/scissors_image"
         android:layout_alignParentEnd="true"
-        android:focusable="false" />
+        android:focusable="false"
+        android:onClick="onScissorsButtonClick" />
 
     <TextView
         android:layout_width="wrap_content"
