@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*private static Translator translator = new Translator();
+    private static Translator translator = new Translator();
     private static int matchNumber = 0;
     private static int algIndex;
     private static int playerScore = 0;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private static PlayerGeneral playerGeneral;
     private static WinChecker winChecker;
 
-    private static void printWinner(int playerPrev, int algPrev) {
+    /**private static void printWinner(int playerPrev, int algPrev) {
 
         WinChecker winChecker = new WinChecker();
         winChecker.setWinner(playerPrev, algPrev);
@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else
             System.out.println("Oops. I farted.");
-    }
+    }*/
 
-    private static int parseInput(String str) {
+    /**private static int parseInput(String str) {
 
         str.trim().toLowerCase();
         if (!((str.equals("r")) || (str.equals("p")) || (str.equals("s")))) {
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         else
             printWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1)), (Integer)(algGeneral.history.get(algGeneral.history.size() - 1)));
         return 1;
-    }
+    }*/
 
     private static int combineAlgs(ArrayList<AlgInterface> algs) {
 
@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 algIndex = i;
         }
 
-        //System.out.println(algIndex + " " + algGeneral.algResults);
         algGeneral.chosenAlgNumber = algIndex;
         algGeneral.history.add(algs.get(algIndex).getHistory().get(algs.get(algIndex).getHistory().size() - 1));
         return algIndex;
@@ -202,6 +201,35 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        algGeneral = new AlgGeneral();
+        playerGeneral = new PlayerGeneral();
+        winChecker = new WinChecker();
+        for (int i = 0; i < 2; i++) {
+            playerGeneral.history.add(new Random().nextInt(3));
+            algGeneral.history.add(new Random().nextInt(3));
+            algGeneral.winHistory.add(new Random().nextInt(3));
+        }
+
+        AlgInterface algOne = new AlgOne();
+        AlgInterface algTwo = new AlgTwo();
+        AlgInterface algThree = new AlgThree();
+        AlgInterface algFour = new AlgFour();
+        AlgInterface algFive = new AlgFive();
+        AlgInterface algSix = new AlgSix();
+        AlgInterface algSeven = new AlgSeven();
+
+        ArrayList algList = new ArrayList<AlgInterface>();
+
+        algList.add(algOne);
+        algList.add(algTwo);
+        algList.add(algThree);
+        algList.add(algFour);
+        algList.add(algFive);
+        algList.add(algSix);
+        algList.add(algSeven);
+
+        addWinHistory(algList);
     }
 
     @Override

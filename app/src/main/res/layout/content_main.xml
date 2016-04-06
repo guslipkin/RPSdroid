@@ -20,7 +20,8 @@
         android:clickable="true"
         android:contentDescription="@string/rock_image"
         android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="onRockButtonClick" />
 
     <ImageButton
         android:layout_width="100dp"
