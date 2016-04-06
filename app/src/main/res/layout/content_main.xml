@@ -12,35 +12,33 @@
     tools:context="fangorntheent.honey.rpsdroid.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/rockButtonID"
         style="@style/AppTheme"
-        android:columnCount="18"
-        android:id="@+id/gridLayoutID"
-        android:rowCount="18">
+        android:clickable="true"
+        android:contentDescription="@string/rock_image"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="true" />
 
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/rockButtonID"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_columnSpan="5"
-            android:layout_rowSpan="5"
-            style="@style/AppTheme"
-            android:clickable="true"
-            android:contentDescription="@string/rock_image" />
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/paperButtonID"
+        android:layout_centerHorizontal="true"
+        style="@style/AppTheme"
+        android:layout_alignBottom="@+id/scissorsButtonID"
+        android:clickable="true"
+        android:contentDescription="@string/paper_image" />
 
-        <ImageButton
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/paperButtonID"
-            android:layout_row="0"
-            android:layout_column="7"
-            android:layout_rowSpan="5"
-            android:layout_columnSpan="5"
-            android:clickable="true"
-            android:contentDescription="@string/paper_image" />
-    </GridLayout>
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/scissorsButtonID"
+        android:clickable="true"
+        android:contentDescription="@string/scissors_image"
+        android:layout_alignParentEnd="true"
+        android:focusable="false" />
+
 </RelativeLayout>
