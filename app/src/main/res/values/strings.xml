@@ -4,4 +4,7 @@
     <string name="rock_image">rock_image</string>
     <string name="paper_image">paper_image</string>
     <string name="scissors_image">scissors_image</string>
+    <string name="rock">Rock</string>
+    <string name="paper">Paper</string>
+    <string name="scissors">Scissors</string>
 </resources>
