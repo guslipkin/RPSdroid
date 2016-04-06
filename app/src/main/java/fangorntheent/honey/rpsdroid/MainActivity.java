@@ -223,8 +223,6 @@ public class MainActivity extends AppCompatActivity {
         AlgInterface algSix = new AlgSix();
         AlgInterface algSeven = new AlgSeven();
 
-        ArrayList algList = new ArrayList<AlgInterface>();
-
         algList.add(algOne);
         algList.add(algTwo);
         algList.add(algThree);
@@ -232,14 +230,12 @@ public class MainActivity extends AppCompatActivity {
         algList.add(algFive);
         algList.add(algSix);
         algList.add(algSeven);
-
-        addWinHistory(algList);
     }
 
     public void onRockButtonClick(View view) {
         playerGeneral.history.add(0);
         setWeight(algList);
-        algGeneral.chosenAlgNumber = combineAlgs(algList);
+        //algGeneral.chosenAlgNumber = combineAlgs(algList);
         addChosenAlg(algList);
         addWinHistory(algList);
         matchNumber++;
