@@ -48,24 +48,18 @@ public class MainActivity extends AppCompatActivity {
         algTextView.setText(translator.numToWords(algPrev));
 
         TextView outcomeTextView = (TextView) findViewById(R.id.outcomeTextID);
-        //System.out.println(" The computer chose algorithm #" + (algIndex + 1));
         if (winChecker.winnerInt == 0) {
-            //System.out.println(" Your " + translator.numToWords(playerPrev) + " BEATS " + translator.numToWords(algPrev));
             outcomeTextView.setText(R.string.beats);
             playerScore++;
         }
         else if (winChecker.winnerInt == 1) {
-            //System.out.println(" Your " + translator.numToWords(playerPrev) + " TIES WITH " + translator.numToWords(algPrev));
             outcomeTextView.setText(R.string.ties_with);
             tieScore++;
         }
         else if (winChecker.winnerInt == 2) {
-            //System.out.println(" Your " + translator.numToWords(playerPrev) + " LOSES TO " + translator.numToWords(algPrev));
             outcomeTextView.setText(R.string.loses_to);
             aiScore++;
         }
-        //else
-            //System.out.println("Oops. I farted.");
     }
 
     /**private static int parseInput(String str) {
