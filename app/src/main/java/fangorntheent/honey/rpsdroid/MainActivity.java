@@ -221,20 +221,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        for (int i = 0; i < 2; i++) {
-            playerGeneral.history.add(new Random().nextInt(3));
-            algGeneral.history.add(new Random().nextInt(3));
-            algGeneral.winHistory.add(new Random().nextInt(3));
-        }
-
-        algList.add(algOne);
-        algList.add(algTwo);
-        algList.add(algThree);
-        algList.add(algFour);
-        algList.add(algFive);
-        algList.add(algSix);
-        algList.add(algSeven);
     }
 
     public void onRockButtonClick(View view) {
@@ -253,14 +239,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onPlayerClick(int stringID) {
+        if (matchNumber == 0) {
+            for (int i = 0; i < 2; i++) {
+                playerGeneral.history.add(new Random().nextInt(3));
+                algGeneral.history.add(new Random().nextInt(3));
+                algGeneral.winHistory.add(new Random().nextInt(3));
+            }
+
+            algList.add(algOne);
+            algList.add(algTwo);
+            algList.add(algThree);
+            algList.add(algFour);
+            algList.add(algFive);
+            algList.add(algSix);
+            algList.add(algSeven);
+        }
         setWeight(algList);
-        //algGeneral.chosenAlgNumber = combineAlgs(algList);
-        //addChosenAlg(algList);
-        //addWinHistory(algList);
+        algGeneral.chosenAlgNumber = combineAlgs(algList);
+        addChosenAlg(algList);
+        addWinHistory(algList);
         matchNumber++;
 
         TextView textView = (TextView) findViewById(R.id.playerPlayTextID);
         textView.setText(stringID);
+
+        printWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size()- 1)), (Integer)(algGeneral.history.get(algGeneral.history.size() - 1)));
     }
 
     @Override
