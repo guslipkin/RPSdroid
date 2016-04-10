@@ -48,13 +48,14 @@ public class AlgSix implements AlgInterface {
         if (playerGeneral.history.size() < 3)
             return getAlg(algGeneral);
 
-        WinningPlay winningPlay = new WinningPlay();
+        int winningPlay;
 
         playerGeneral.setThrowCount(2);
-        winningPlay.setWinningPlay(algGeneral.winningPlaySeeder(playerGeneral.rCount, playerGeneral.pCount, playerGeneral.sCount));
+        //winningPlay.setWinningPlay(algGeneral.winningPlaySeeder(playerGeneral.rCount, playerGeneral.pCount, playerGeneral.sCount));
+        winningPlay = algGeneral.winningPlaySeeder(playerGeneral.rCount, playerGeneral.pCount, playerGeneral.sCount);
 
-        algGeneral.algResults.set(algNumber, winningPlay.winningPlay);
-        history.add(winningPlay.winningPlay);
+        algGeneral.algResults.set(algNumber, winningPlay);
+        history.add(winningPlay);
         return (Integer)(history.get(history.size() - 1));
     }
 
