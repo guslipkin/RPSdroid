@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         return 1;
     }*/
 
-    private static int combineAlgs(ArrayList<AlgInterface> algs) {
+    private static void combineAlgs(ArrayList<AlgInterface> algs) {
 
         algIndex = 0;
 
@@ -111,13 +111,12 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < algGeneral.algResults.size(); i++) {
             algGeneral.algResults.set(i, algs.get(i).getTotal());
-            if ((Integer)(algGeneral.algResults.get(i)) > (Integer)(algGeneral.algResults.get(algIndex)))
+            if (((Integer)(algGeneral.algResults.get(i)) > (Integer)(algGeneral.algResults.get(algIndex))) || (i == 0))
                 algIndex = i;
         }
 
         algGeneral.chosenAlgNumber = algIndex;
         algGeneral.history.add(algs.get(algIndex).getHistory().get(algs.get(algIndex).getHistory().size() - 1));
-        return algIndex;
     }
 
     private static void addChosenAlg(ArrayList<AlgInterface> algs) {
@@ -141,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
     private static void addWinHistory(ArrayList<AlgInterface> algs) {
 
         for (AlgInterface alg : algs) {
-            if (alg.getHistory().size() > 0)
-                winChecker.setWinner((Integer) (playerGeneral.history.get(playerGeneral.history.size() - 1)), alg.getHistory().get(alg.getHistory().size() - 1));
+            //if (alg.getHistory().size() > 0)
+            winChecker.setWinner((Integer) (playerGeneral.history.get(playerGeneral.history.size() - 1)), alg.getHistory().get(alg.getHistory().size() - 1));
             alg.getWinHistory().add(winChecker.winnerInt);
         }
     }
@@ -251,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
             algList.add(algSeven);
         }
         setWeight(algList);
-        algGeneral.chosenAlgNumber = combineAlgs(algList);
+        combineAlgs(algList);
         addChosenAlg(algList);
         addWinHistory(algList);
         matchNumber++;
