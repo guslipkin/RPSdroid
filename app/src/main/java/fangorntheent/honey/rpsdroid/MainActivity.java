@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void printWinner(int playerPrev, int algPrev) {
 
-        algPrev = new Random().nextInt(3);
+        if (matchNumber == 0)
+            algPrev = new Random().nextInt(3);
         WinChecker winChecker = new WinChecker();
         winChecker.setWinner(playerPrev, algPrev);
 
