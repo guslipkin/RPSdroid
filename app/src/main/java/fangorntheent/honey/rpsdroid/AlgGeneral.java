@@ -8,15 +8,19 @@ import java.util.Random;
  */
 public class AlgGeneral {
 
-    public int totalAlgNumber = 7;
-    public int chosenAlgNumber = -1;
-    public int matchNumber = 0;
+    public int totalAlgNumber;
+    public int chosenAlgNumber;
+    public int matchNumber;
 
     public ArrayList history;
     public ArrayList winHistory;
     public ArrayList algResults;
 
     public AlgGeneral() {
+
+        totalAlgNumber = 7;
+        chosenAlgNumber = -1;
+        matchNumber = 0;
 
         history = new ArrayList<>();
         winHistory = new ArrayList<>();
