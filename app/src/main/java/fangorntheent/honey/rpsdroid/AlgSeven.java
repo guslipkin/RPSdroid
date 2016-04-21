@@ -45,7 +45,7 @@ public class AlgSeven implements AlgInterface {
     public int getAlg(PlayerGeneral playerGeneral, AlgGeneral algGeneral) {
 
         // Needs extra time to kick in but must maintain same standards
-        if (playerGeneral.history.size() < 3)
+        if (algGeneral.matchNumber < 3)
             return getAlg(algGeneral);
 
         WinningPlay winningPlay = new WinningPlay();

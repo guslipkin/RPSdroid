@@ -50,7 +50,7 @@ public class AlgTwo implements AlgInterface {
     // Add and return Alg's throw
     public int getAlg(PlayerGeneral playerGeneral, AlgGeneral algGeneral) {
 
-        if (playerGeneral.history.size() < 2)
+        if (algGeneral.matchNumber < 2)
             return getAlg(algGeneral);
 
         int algPrev = (Integer)(algGeneral.history.get(algGeneral.history.size() - 1));

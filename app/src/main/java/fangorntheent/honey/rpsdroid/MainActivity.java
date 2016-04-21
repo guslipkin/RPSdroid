@@ -20,7 +20,6 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
 
     private static Translator translator = new Translator();
-    private static int matchNumber = 0;
     private static int algIndex;
     private static int playerScore = 0;
     private static int aiScore = 0;
@@ -96,12 +95,12 @@ public class MainActivity extends AppCompatActivity {
         for (int j = 0; j < algs.size(); j++) {
             algs.get(j).getAlg(playerGeneral, algGeneral);
             algs.get(j).setTotal(0);
-            for (int i = 0; i < matchNumber; i++)
+            for (int i = 0; i < algGeneral.matchNumber; i++)
                 algs.get(j).setTotal(algs.get(j).getTotal() + ((Integer)(algs.get(j).getWinHistory().get(algs.get(j).getWinHistory().size() - 1)) * algs.get(j).getWeight()));
-            if (matchNumber > 2)
+            if (algGeneral.matchNumber > 2)
                 for (int i = 0; i <= 2; i++)
                     algs.get(j).setTotal(algs.get(j).getTotal() + ((Integer)(algs.get(j).getWinHistory().get(algs.get(j).getWinHistory().size() - 1)) * algs.get(j).getWeight() * 3));
-            if (matchNumber > 3)
+            if (algGeneral.matchNumber > 3)
                 for (int i = 3; i <= 4; i++)
                     algs.get(j).setTotal(algs.get(j).getTotal() + ((Integer)(algs.get(j).getWinHistory().get(algs.get(j).getWinHistory().size() - 1)) * algs.get(j).getWeight() * 2));
 
@@ -233,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onPlayerClick(int stringID) {
-        if (matchNumber == 0) {
+        if (algGeneral.matchNumber == 0) {
             /*for (int i = 0; i < 2; i++) {
                 playerGeneral.history.add(new Random().nextInt(3));
                 algGeneral.history.add(new Random().nextInt(3));
@@ -256,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
         algGeneral.chosenAlgNumber = combineAlgs(algList);
         addChosenAlg(algList);
         addWinHistory(algList);
-        matchNumber++;
+        algGeneral.matchNumber++;
 
         TextView textView = (TextView) findViewById(R.id.playerPlayTextID);
         textView.setText(stringID);

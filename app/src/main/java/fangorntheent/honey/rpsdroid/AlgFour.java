@@ -47,7 +47,7 @@ public class AlgFour implements AlgInterface {
 
     public int getAlg(PlayerGeneral playerGeneral, AlgGeneral algGeneral) {
 
-        if (playerGeneral.history.size() < 2)
+        if (algGeneral.matchNumber < 2)
             return getAlg(algGeneral);
 
         int playerPrev = (Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1));

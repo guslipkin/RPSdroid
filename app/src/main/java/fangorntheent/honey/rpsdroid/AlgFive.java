@@ -45,7 +45,7 @@ public class AlgFive implements AlgInterface {
     public int getAlg(PlayerGeneral playerGeneral, AlgGeneral algGeneral) {
 
         // Needs extra time to kick in but must maintain same standards
-        if (playerGeneral.history.size() < 4)
+        if (algGeneral.matchNumber < 4)
             return getAlg(algGeneral);
 
         int r = 0;
