@@ -83,33 +83,6 @@ public class MainActivity extends AppCompatActivity {
             "Ties: " + tieScore);
     }
 
-    /**private static int parseInput(String str) {
-
-        str.trim().toLowerCase();
-        if (!((str.equals("r")) || (str.equals("p")) || (str.equals("s")))) {
-            playerGeneral.history.remove(playerGeneral.history.size() - 1);
-            if (str.equals("scores")) {
-                System.out.println(" Player: " + playerScore);
-                System.out.println(" Ai: " + aiScore);
-                System.out.println(" Tie: " + tieScore);
-            }
-            if (str.equals("help") || str.equals("h")) {
-                System.out.println(" To play: 'r', 'p', or 's'");
-                System.out.println(" To see scores: 'scores'");
-                System.out.println(" To exit: 'stop', 'exit', or 'quit'");
-                System.out.println(" To get help: 'help' or 'h'");
-            }
-            if (str.equals("stop") || str.equals("exit") || str.equals("quit")) {
-                System.out.println("The program will now exit.");
-                return -1;
-            }
-            return 0;
-        }
-        else
-            printWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1)), (Integer)(algGeneral.history.get(algGeneral.history.size() - 1)));
-        return 1;
-    }*/
-
     private static int combineAlgs(ArrayList<AlgInterface> algs) {
 
         algIndex = 0;
@@ -166,61 +139,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**public static void main(String[] args) {
-
-        algGeneral = new AlgGeneral();
-        playerGeneral = new PlayerGeneral();
-        winChecker = new WinChecker();
-        for (int i = 0; i < 2; i++) {
-            playerGeneral.history.add(new Random().nextInt(3));
-            algGeneral.history.add(new Random().nextInt(3));
-            algGeneral.winHistory.add(new Random().nextInt(3));
-        }
-
-        AlgInterface algOne = new AlgOne();
-        AlgInterface algTwo = new AlgTwo();
-        AlgInterface algThree = new AlgThree();
-        AlgInterface algFour = new AlgFour();
-        AlgInterface algFive = new AlgFive();
-        AlgInterface algSix = new AlgSix();
-        AlgInterface algSeven = new AlgSeven();
-
-        ArrayList algList = new ArrayList<AlgInterface>();
-
-        algList.add(algOne);
-        algList.add(algTwo);
-        algList.add(algThree);
-        algList.add(algFour);
-        algList.add(algFive);
-        algList.add(algSix);
-        algList.add(algSeven);
-
-        addWinHistory(algList);
-
-        Scanner reader = new Scanner(System.in);
-        String input;
-        int parseResult;
-
-        while (true) {
-            if (matchNumber == 0)
-                System.out.println("To see options, press 'h', or type 'help'." + "\n");
-            System.out.println("Round: " + matchNumber);
-            System.out.print(" Choose your throw: ");
-            input = reader.nextLine();
-            playerGeneral.history.add(translator.wordsToNum(input));
-            parseResult = parseInput(input);
-            if (parseResult == -1)
-                break;
-            else if (parseResult == 1) {
-                setWeight(algList);
-                algGeneral.chosenAlgNumber = combineAlgs(algList);
-                addChosenAlg(algList);
-                addWinHistory(algList);
-                matchNumber++;
-            }
-        }
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -255,13 +173,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onPlayerClick(int stringID) {
         if (algGeneral.matchNumber == 0) {
-            /*for (int i = 0; i < 2; i++) {
-                playerGeneral.history.add(new Random().nextInt(3));
-                algGeneral.history.add(new Random().nextInt(3));
-                winChecker.setWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1)),
-                        (Integer)(algGeneral.history.get(algGeneral.history.size() - 1)));
-                algGeneral.winHistory.add(winChecker.winnerInt);
-            }*/
 
             algList.add(algOne);
             algList.add(algTwo);
@@ -278,9 +189,6 @@ public class MainActivity extends AppCompatActivity {
         addChosenAlg(algList);
         addWinHistory(algList);
         algGeneral.matchNumber++;
-
-        //TextView textView = (TextView) findViewById(R.id.playerPlayTextID);
-        //textView.setText(stringID);
 
         printWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size()- 1)), (Integer)(algGeneral.history.get(algGeneral.history.size() - 1)));
     }
