@@ -131,53 +131,30 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:textColor="@android:color/white"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/playerHistoryTextID"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/paperTextID"
-        android:layout_toStartOf="@+id/paperTextID"
-        android:textColor="@android:color/white"
-        android:textAlignment="textEnd" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/outcomeHistoryTextID"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/white"
-        android:textIsSelectable="false"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/algHistoryTextID"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/paperTextID"
-        android:layout_toEndOf="@+id/paperTextID"
-        android:textColor="@android:color/white"
-        android:textAlignment="textStart" />
+        android:textAlignment="center"
+        android:text="@string/scores" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/matchNumberTextID"
-        android:layout_centerVertical="true"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/playerPlayTextID"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/white"
-        android:hint="@string/player_play"
-        android:text="@string/player_play"
-        android:singleLine="true"
         android:textAlignment="textEnd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/playerHistoryTextID"
+        android:layout_below="@+id/playerPlayTextID"
+        android:layout_alignRight="@+id/playerPlayTextID"
+        android:layout_alignEnd="@+id/playerPlayTextID"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
 
 </RelativeLayout>

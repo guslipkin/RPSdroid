@@ -8,14 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
     AlgInterface algSix = new AlgSix();
     AlgInterface algSeven = new AlgSeven();
 
-    static String[] gameHistory = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    static String[] matchNumberHistory = new String[21];
+    static String[] playerHistory = new String[21];
+    static String[] algHistory = new String[21];
 
     private void newGame() {
 
@@ -60,13 +58,48 @@ public class MainActivity extends AppCompatActivity {
         algSix = new AlgSix();
         algSeven = new AlgSeven();
 
+        for (int i = 0; i < 21; i++) {
+            matchNumberHistory[i] = "\n";
+            playerHistory[i] = "\n";
+            algHistory[i] = "\n";
+        }
+    }
+
+    private void printStats() {
+        String s;
+
+        s = algGeneral.matchNumber + "";
+        for (int i = 0; i < 20; i++)
+            matchNumberHistory[i] = matchNumberHistory[i + 1];
+        matchNumberHistory[20] = s;
+        s = "\n";
+        for (int i = 20; i > 0; i--)
+            s += (matchNumberHistory[i] + "\n");
+        TextView matchNumberTextView = (TextView) findViewById(R.id.matchNumberTextID);
+        matchNumberTextView.setText(s);
+
         for (int i = 0; i < 21; i++)
-            gameHistory[i] = "";
+            playerHistory[i] = "\n";
+        s = translator.numToWords((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1)));
+        for (int i = 0; i < 20; i++)
+            playerHistory[i] = playerHistory[i + 1];
+        playerHistory[20] = s;
+        s = "\n";
+        for (int i = 20; i > 0; i--)
+            s += (playerHistory[i] + "\n");
+        TextView playerHistoryTextView = (TextView) findViewById(R.id.playerHistoryTextID);
+        playerHistoryTextView.setText(s);
+
+        /** Score text updater */
+        s = ("Player: " + playerScore + "\n" +
+                "AI: " + aiScore + "\n" +
+                "Ties: " + tieScore);
+        TextView scoreTextView = (TextView) findViewById(R.id.scoreTextID);
+        scoreTextView.setText(s);
     }
 
     private void printWinner(int playerPrev, int algPrev) {
 
-        String currentRound = "";
         algPrev = new Random().nextInt(3);
         winChecker.setWinner(playerPrev, algPrev);
 
@@ -90,21 +123,7 @@ public class MainActivity extends AppCompatActivity {
             aiScore++;
         }
 
-        currentRound = algGeneral.matchNumber + " " +playerTextView.getText().toString() + " " +
-                outcomeTextView.getText().toString() + " " + algTextView.getText().toString();
-        for (int i = 0; i < 20; i++)
-            gameHistory[i] = gameHistory[i + 1];
-        gameHistory[20] = currentRound;
-        currentRound = "\n";
-        for (int i = 20; i > -1; i--)
-            currentRound += gameHistory[i] + "\n";
-        TextView historyTextView = (TextView) findViewById(R.id.historyTextID);
-        historyTextView.setText(currentRound);
-
-        TextView scoreTextView = (TextView) findViewById(R.id.scoreTextID);
-        scoreTextView.setText("Player: " + playerScore + "\n" +
-            "AI: " + aiScore + "\n" +
-            "Ties: " + tieScore);
+        printStats();
     }
 
     private static int combineAlgs(ArrayList<AlgInterface> algs) {
@@ -183,20 +202,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void onRockButtonClick(View view) {
         playerGeneral.history.add(0);
-        onPlayerClick(R.string.rock);
+        onPlayerClick();
     }
 
     public void onPaperButtonClick(View view) {
         playerGeneral.history.add(1);
-        onPlayerClick(R.string.paper);
+        onPlayerClick();
     }
 
     public void onScissorsButtonClick(View view) {
         playerGeneral.history.add(2);
-        onPlayerClick(R.string.scissors);
+        onPlayerClick();
     }
 
-    public void onPlayerClick(int stringID) {
+    public void onPlayerClick() {
         if (algGeneral.matchNumber == 0) {
 
             algList.add(algOne);
