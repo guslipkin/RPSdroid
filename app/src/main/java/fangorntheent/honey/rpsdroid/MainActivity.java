@@ -38,7 +38,31 @@ public class MainActivity extends AppCompatActivity {
     AlgInterface algSix = new AlgSix();
     AlgInterface algSeven = new AlgSeven();
 
-    String[] gameHistory = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+    static String[] gameHistory = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+
+    private void newGame() {
+
+        translator = new Translator();
+        playerScore = 0;
+        aiScore = 0;
+        tieScore = 0;
+
+        algGeneral = new AlgGeneral();
+        playerGeneral = new PlayerGeneral();
+        winChecker = new WinChecker();
+
+        algList = new ArrayList<AlgInterface>();
+        algOne = new AlgOne();
+        algTwo = new AlgTwo();
+        algThree = new AlgThree();
+        algFour = new AlgFour();
+        algFive = new AlgFive();
+        algSix = new AlgSix();
+        algSeven = new AlgSeven();
+
+        for (int i = 0; i < 21; i++)
+            gameHistory[i] = "";
+    }
 
     private void printWinner(int playerPrev, int algPrev) {
 
@@ -150,7 +174,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                newGame();
+                Snackbar.make(view, "The game will reset on your next throw", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
