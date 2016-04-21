@@ -38,10 +38,16 @@ public class MainActivity extends AppCompatActivity {
     AlgInterface algSix = new AlgSix();
     AlgInterface algSeven = new AlgSeven();
 
+    String[] gameHistory = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+
     private void printWinner(int playerPrev, int algPrev) {
 
-        //algPrev = new Random().nextInt(3);
+        String currentRound = "";
+        algPrev = new Random().nextInt(3);
         winChecker.setWinner(playerPrev, algPrev);
+
+        TextView playerTextView = (TextView) findViewById(R.id.playerPlayTextID);
+        playerTextView.setText(translator.numToWords(playerPrev));
 
         TextView algTextView = (TextView) findViewById(R.id.algPlayTextID);
         algTextView.setText(translator.numToWords(algPrev));
@@ -59,6 +65,17 @@ public class MainActivity extends AppCompatActivity {
             outcomeTextView.setText(R.string.loses_to);
             aiScore++;
         }
+
+        currentRound = algGeneral.matchNumber + " " +playerTextView.getText().toString() + " " +
+                outcomeTextView.getText().toString() + " " + algTextView.getText().toString();
+        for (int i = 0; i < 20; i++)
+            gameHistory[i] = gameHistory[i + 1];
+        gameHistory[20] = currentRound;
+        currentRound = "";
+        for (int i = 20; i > -1; i--)
+            currentRound += gameHistory[i] + "\n";
+        TextView historyTextView = (TextView) findViewById(R.id.historyTextID);
+        historyTextView.setText(currentRound);
     }
 
     /**private static int parseInput(String str) {
@@ -257,8 +274,8 @@ public class MainActivity extends AppCompatActivity {
         addWinHistory(algList);
         algGeneral.matchNumber++;
 
-        TextView textView = (TextView) findViewById(R.id.playerPlayTextID);
-        textView.setText(stringID);
+        //TextView textView = (TextView) findViewById(R.id.playerPlayTextID);
+        //textView.setText(stringID);
 
         printWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size()- 1)), (Integer)(algGeneral.history.get(algGeneral.history.size() - 1)));
     }
