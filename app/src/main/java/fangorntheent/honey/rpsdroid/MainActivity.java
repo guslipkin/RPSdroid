@@ -71,11 +71,16 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++)
             gameHistory[i] = gameHistory[i + 1];
         gameHistory[20] = currentRound;
-        currentRound = "";
+        currentRound = "\n";
         for (int i = 20; i > -1; i--)
             currentRound += gameHistory[i] + "\n";
         TextView historyTextView = (TextView) findViewById(R.id.historyTextID);
         historyTextView.setText(currentRound);
+
+        TextView scoreTextView = (TextView) findViewById(R.id.scoreTextID);
+        scoreTextView.setText("Player: " + playerScore + "\n" +
+            "AI: " + aiScore + "\n" +
+            "Ties: " + tieScore);
     }
 
     /**private static int parseInput(String str) {
