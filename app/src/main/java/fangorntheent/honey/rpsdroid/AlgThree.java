@@ -53,13 +53,13 @@ public class AlgThree implements AlgInterface {
         if (algGeneral.matchNumber < 3)
             return getAlg(algGeneral);
 
-        WinningPlay winningPlay = new WinningPlay();
+        int winningPlay;
 
         playerGeneral.setThrowCount(2);
-        winningPlay.setWinningPlay(algGeneral.losingPlaySeeder(playerGeneral.rCount, playerGeneral.pCount, playerGeneral.sCount));
+        winningPlay = algGeneral.losingPlaySeeder(playerGeneral.rCount, playerGeneral.pCount, playerGeneral.sCount);
 
-        algGeneral.algResults.set(algNumber, winningPlay.winningPlay);
-        history.add(winningPlay.winningPlay);
+        algGeneral.algResults.set(algNumber, winningPlay);
+        history.add(winningPlay);
         return (Integer)(history.get(history.size() - 1));
     }
 

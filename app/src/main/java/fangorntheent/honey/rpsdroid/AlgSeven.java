@@ -48,12 +48,12 @@ public class AlgSeven implements AlgInterface {
         if (algGeneral.matchNumber < 3)
             return getAlg(algGeneral);
 
-        WinningPlay winningPlay = new WinningPlay();
+        int winningPlay;
 
         playerGeneral.setThrowCount(playerGeneral.history.size() - 1);
-        winningPlay.setWinningPlay(algGeneral.winningPlaySeeder(playerGeneral.rCount, playerGeneral.pCount, playerGeneral.sCount));
+        winningPlay = algGeneral.winningPlaySeeder(playerGeneral.rCount, playerGeneral.pCount, playerGeneral.sCount);
 
-        algGeneral.algResults.set(algNumber, winningPlay.winningPlay);
+        algGeneral.algResults.set(algNumber, winningPlay);
         history.add(algGeneral.algResults.get(algNumber));
         return (Integer)(history.get(history.size() - 1));
     }
