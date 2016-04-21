@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void printWinner(int playerPrev, int algPrev) {
 
-        algPrev = new Random().nextInt(3);
-        WinChecker winChecker = new WinChecker();
+        //algPrev = new Random().nextInt(3);
         winChecker.setWinner(playerPrev, algPrev);
 
         TextView algTextView = (TextView) findViewById(R.id.algPlayTextID);
@@ -235,11 +234,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void onPlayerClick(int stringID) {
         if (matchNumber == 0) {
-            for (int i = 0; i < 2; i++) {
+            /*for (int i = 0; i < 2; i++) {
                 playerGeneral.history.add(new Random().nextInt(3));
                 algGeneral.history.add(new Random().nextInt(3));
-                algGeneral.winHistory.add(new Random().nextInt(3));
-            }
+                winChecker.setWinner((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1)),
+                        (Integer)(algGeneral.history.get(algGeneral.history.size() - 1)));
+                algGeneral.winHistory.add(winChecker.winnerInt);
+            }*/
 
             algList.add(algOne);
             algList.add(algTwo);
@@ -249,6 +250,8 @@ public class MainActivity extends AppCompatActivity {
             algList.add(algSix);
             algList.add(algSeven);
         }
+
+
         setWeight(algList);
         algGeneral.chosenAlgNumber = combineAlgs(algList);
         addChosenAlg(algList);
