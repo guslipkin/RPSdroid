@@ -17,4 +17,7 @@
     <string name="beats">BEATS</string>
     <string name="ties_with">TIES WITH</string>
     <string name="loses_to">LOSES TO</string>
+    <string name="scores">Player: 0 \n
+                          AI: 0 \n
+                          Tie: 0</string>
 </resources>
