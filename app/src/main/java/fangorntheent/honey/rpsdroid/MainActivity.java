@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -35,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     AlgInterface algSeven = new AlgSeven();
 
     static String[] matchNumberHistory = new String[21];
-    static String[] playerHistory = new String[21];
-    static String[] algHistory = new String[21];
 
     private void newGame() {
 
@@ -58,11 +58,8 @@ public class MainActivity extends AppCompatActivity {
         algSix = new AlgSix();
         algSeven = new AlgSeven();
 
-        for (int i = 0; i < 21; i++) {
+        for (int i = 0; i < 21; i++)
             matchNumberHistory[i] = "\n";
-            playerHistory[i] = "\n";
-            algHistory[i] = "\n";
-        }
     }
 
     private void printStats() {
@@ -78,17 +75,27 @@ public class MainActivity extends AppCompatActivity {
         TextView matchNumberTextView = (TextView) findViewById(R.id.matchNumberTextID);
         matchNumberTextView.setText(s);
 
-        for (int i = 0; i < 21; i++)
-            playerHistory[i] = "\n";
-        s = translator.numToWords((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1)));
-        for (int i = 0; i < 20; i++)
-            playerHistory[i] = playerHistory[i + 1];
-        playerHistory[20] = s;
-        s = "\n";
-        for (int i = 20; i > 0; i--)
-            s += (playerHistory[i] + "\n");
+        String playerHistory = "\n";
+        String algHistory = "\n";
+        String outcomeHistory = "\n";
+        int size = playerGeneral.history.size();
+        if (playerGeneral.history.size() >= 20)
+            size = 20;
+        for (int i = 0; i < size; i++) {
+            playerHistory += (translator.numToWords((Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1 - i))) + "\n");
+            algHistory += (translator.numToWords((Integer)(algGeneral.history.get(algGeneral.history.size() - 1 - i))) + "\n");
+            winChecker.setWinner(
+                    (Integer)(playerGeneral.history.get(playerGeneral.history.size() - 1 - i)),
+                    (Integer)(algGeneral.history.get(algGeneral.history.size() - 1 - i)));
+            outcomeHistory += (winChecker.winnerWord + "\n");
+        }
         TextView playerHistoryTextView = (TextView) findViewById(R.id.playerHistoryTextID);
-        playerHistoryTextView.setText(s);
+        TextView algHistoryTextView = (TextView) findViewById(R.id.algHistoryTextID);
+        TextView outcomeHistoryTextView = (TextView) findViewById(R.id.outcomeHistoryTextID);
+        playerHistoryTextView.setText(playerHistory);
+        algHistoryTextView.setText(algHistory);
+        outcomeHistoryTextView.setText(outcomeHistory);
+
 
         /** Score text updater */
         s = ("Player: " + playerScore + "\n" +

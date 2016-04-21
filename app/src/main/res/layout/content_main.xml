@@ -139,7 +139,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/matchNumberTextID"
-        android:textSize="12sp"
         android:textColor="@android:color/white"
         android:layout_below="@+id/playerPlayTextID"
         android:layout_alignParentLeft="true"
@@ -151,10 +150,32 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/playerHistoryTextID"
-        android:layout_below="@+id/playerPlayTextID"
-        android:layout_alignRight="@+id/playerPlayTextID"
-        android:layout_alignEnd="@+id/playerPlayTextID"
         android:textColor="@android:color/white"
-        android:textSize="12sp" />
+        android:textAlignment="textEnd"
+        android:singleLine="false"
+        android:layout_below="@+id/playerPlayTextID"
+        android:layout_toLeftOf="@+id/outcomeHistoryTextID"
+        android:layout_toStartOf="@+id/outcomeHistoryTextID" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/algHistoryTextID"
+        android:layout_below="@+id/outcomeTextID"
+        android:layout_toRightOf="@+id/outcomeHistoryTextID"
+        android:layout_toEndOf="@id/outcomeHistoryTextID"
+        android:textColor="@android:color/white"
+        android:textAlignment="textStart" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/outcomeHistoryTextID"
+        android:layout_below="@+id/playerPlayTextID"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:textAlignment="center" />
 
 </RelativeLayout>
