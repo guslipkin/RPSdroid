@@ -20,13 +20,13 @@ public class WinChecker {
             winnerInt = 0;
             winnerText = "player";
         }
-        else if ((player - ai == -1) || (player - ai == 2)) {
-            winnerInt = 2;
-            winnerText = "ai";
-        }
-        else {
+        else if (player == ai){
             winnerInt = 1;
             winnerText = "tie";
+        }
+        else {
+            winnerInt = 2;
+            winnerText = "ai";
         }
     }
 
@@ -34,17 +34,16 @@ public class WinChecker {
         if ((player - ai == 1) || (player - ai == -2)) {
             winnerInt = 0;
             winnerText =  "player";
-            history.add(winnerInt);
         }
-        else if ((player - ai == -1) || (player - ai == 2)) {
-            winnerInt = 2;
-            winnerText = "ai";
-            history.add(winnerInt);
-        }
-        else {
+        else if (player == ai){
             winnerInt = 1;
             winnerText = "tie";
-            history.add(winnerInt);
         }
+        else {
+            winnerInt = 2;
+            winnerText = "ai";
+        }
+
+        history.add(winnerInt);
     }
 }
