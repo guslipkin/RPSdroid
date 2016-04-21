@@ -10,6 +10,7 @@ public class AlgGeneral {
 
     public int totalAlgNumber = 7;
     public int chosenAlgNumber = -1;
+    public int matchNumber = 0;
 
     public ArrayList history;
     public ArrayList winHistory;
