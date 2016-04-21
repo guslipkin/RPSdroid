@@ -21,17 +21,17 @@ public class WinChecker {
         if ((player - ai == 1) || (player - ai == -2)) {
             winnerInt = 0;
             winnerText = "player";
-            winnerWord = "BEATS";
+            winnerWord = "   BEATS   ";
         }
         else if (player == ai){
             winnerInt = 1;
             winnerText = "tie";
-            winnerWord = "TIES WITH";
+            winnerWord = " TIES WITH ";
         }
         else {
             winnerInt = 2;
             winnerText = "ai";
-            winnerWord = "LOSES TO";
+            winnerWord = " LOSES  TO ";
         }
     }
 
