@@ -140,7 +140,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:textColor="@android:color/white"
-        android:textAlignment="center"
-        android:phoneNumber="false" />
+        android:textAlignment="center" />
 
 </RelativeLayout>
