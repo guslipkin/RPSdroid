@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private static int playerScore = 0;
     private static int aiScore = 0;
     private static int tieScore = 0;
+    private static String outcome = "";
+    private static String player = "";
 
     private static AlgGeneral algGeneral = new AlgGeneral();
     private static PlayerGeneral playerGeneral = new PlayerGeneral();
@@ -97,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                     (Integer)(algGeneral.history.get(algGeneral.history.size() - 1 - i)));
             outcomeHistory += (winChecker.winnerWord + "\n");
         }
+        //playerHistory += player + "\n";
+        //outcomeHistory += outcome + "\n";
         TextView playerHistoryTextView = (TextView) findViewById(R.id.playerHistoryTextID);
         TextView algHistoryTextView = (TextView) findViewById(R.id.algHistoryTextID);
         TextView outcomeHistoryTextView = (TextView) findViewById(R.id.outcomeHistoryTextID);
@@ -118,8 +122,9 @@ public class MainActivity extends AppCompatActivity {
         algPrev = new Random().nextInt(3);
         winChecker.setWinner(playerPrev, algPrev);
 
+        player = translator.numToWords(playerPrev);
         TextView playerTextView = (TextView) findViewById(R.id.playerPlayTextID);
-        playerTextView.setText(translator.numToWords(playerPrev));
+        playerTextView.setText(player);
 
         TextView algTextView = (TextView) findViewById(R.id.algPlayTextID);
         algTextView.setText(translator.numToWords(algPrev));
@@ -137,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             outcomeTextView.setText(R.string.loses_to);
             aiScore++;
         }
+        outcome = winChecker.winnerWord;
 
         printStats();
     }
