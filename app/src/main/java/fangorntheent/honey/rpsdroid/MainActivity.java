@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     AlgInterface algSix = new AlgSix();
     AlgInterface algSeven = new AlgSeven();
 
-    static String[] matchNumberHistory = new String[21];
+    static int[] matchNumberHistory = new int[21];
+    //static int[] weightArray = new int[6];
 
     private void newGame() {
 
@@ -59,20 +60,27 @@ public class MainActivity extends AppCompatActivity {
         algSeven = new AlgSeven();
 
         for (int i = 0; i < 21; i++)
-            matchNumberHistory[i] = "\n";
+            matchNumberHistory[i] = -1;
     }
 
     private void printStats() {
         String s;
 
-        s = algGeneral.matchNumber + "";
         for (int i = 0; i < 20; i++)
             matchNumberHistory[i] = matchNumberHistory[i + 1];
-        matchNumberHistory[20] = s;
+        matchNumberHistory[20] = algGeneral.matchNumber;
         s = "\n";
-        for (int i = 20; i > 0; i--)
-            s += (matchNumberHistory[i] + "\n");
+        for (int i = 20; i > 0; i--) {
+            if ((matchNumberHistory[i] == -1) || matchNumberHistory[i] == 0)
+                s += "";
+            else
+                s += (matchNumberHistory[i] + "\n");
+        }
+
         TextView matchNumberTextView = (TextView) findViewById(R.id.matchNumberTextID);
+        //s = "";
+        //for (int i = 0; i < 6; i++)
+        //    s += weightArray[i] + "\n";
         matchNumberTextView.setText(s);
 
         String playerHistory = "\n";
@@ -171,13 +179,17 @@ public class MainActivity extends AppCompatActivity {
     private static void setWeight(ArrayList<AlgInterface> algs) {
 
         for (AlgInterface alg : algs) {
+            double weight = alg.getWeight();
             if (alg.getWinHistory().size() > 0) {
                 if (alg.getWinHistory().get(alg.getWinHistory().size() - 1) == 2)
-                    alg.setWeight(alg.getWeight() + 2);
+                    alg.setWeight((int) Math.ceil((alg.getWeight() / algGeneral.matchNumber) + 2));
                 else if (alg.getWinHistory().get(alg.getWinHistory().size() - 1) == 1)
-                    alg.setWeight(alg.getWeight() + 1);
+                    alg.setWeight((int) Math.ceil((alg.getWeight() / algGeneral.matchNumber) + 1));
             }
         }
+
+        //for (int i = 0; i < algs.size() - 1; i++)
+        //    weightArray[i] = algs.get(i).getTotal();
     }
 
     private static void addWinHistory(ArrayList<AlgInterface> algs) {
